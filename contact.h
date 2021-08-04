@@ -2,6 +2,7 @@
 #include<string.h>
 #include<errno.h>
 #include<stdlib.h>
+#include<time.h>
 
 #define NAME_MAX 10
 #define PHONE_MAX 20
@@ -15,7 +16,8 @@ enum OP
 	FIND,
 	CHANGER,
 	SHOW,
-	SAVE
+	SAVE,
+	RAND
 };
 
 typedef struct
@@ -52,5 +54,7 @@ void showcontact(contact* ps);  //展示通讯录
 void savetxtcontact(contact* ps); //保存通讯录文档
 
 void logincontact(contact* ps); //加载通讯录文档
+
+void randcontact(contact* ps); //随机载入联系人
 
 void freecontact(contact* ps); //释放内存

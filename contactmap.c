@@ -24,7 +24,7 @@ void logincontact(contact* ps)
 	if (fw == NULL)
 	{
 		printf("加载错误:%s\n", strerror(errno));
-		printf("如果第一次没有contact.txt,会自动加上记录文档\n");
+		printf("如果第一次运行没有contact.txt,会自动建新文档保存\n");
 		return;
 	}
 
@@ -204,6 +204,54 @@ void savetxtcontact(contact* ps)
 	fp = NULL;
 	return;
 }
+
+void randcontact(contact* ps)
+{
+	int size = 0;
+	printf("请输入随机载入人数:>");
+	scanf("%d", &size);
+	if (size < 0)
+	{
+		printf("人数不能小于0！\n");
+		return;
+	}
+	info*tmp = (info*)realloc(ps->data,sizeof(info) * size*2);
+	if (tmp == NULL)
+	{
+		return;
+	}
+	ps->data = tmp;
+	srand((unsigned)time(NULL));
+	for (int i = 0; i < size; i++)
+	{
+		int age = rand()/2;
+		char sex[5] = { 0 };
+		char name[NAME_MAX] = { 0 };
+		int height = rand();
+		char number[PHONE_MAX] = { 0 };
+		char home[HOME_MAX] = { 0 };
+		if (rand() % 2 == 0)
+		{
+			sprintf(sex, "%s","男");
+		}
+		else
+		{
+			sprintf(sex, "%s", "女");
+		}
+		sprintf(name, "%d", rand());
+		sprintf(number, "%d", rand()/2);
+		sprintf(home, "%d", rand() - 2);
+		ps->data[ps->size].age = age;
+		strcpy(ps->data[ps->size].name,name);
+		ps->data[ps->size].height = height;
+		strcpy(ps->data[ps->size].sex,sex);
+		strcpy(ps->data[ps->size].phonenumber, number);
+		strcpy(ps->data[ps->size].address,home);
+		ps->size++;
+	}
+	return;
+}
+
 
 void freecontact(contact* ps)
 {

@@ -12,6 +12,7 @@ void menu()
 	printf("----------4.修改联系人---------\n");
 	printf("----------5.查看通讯录---------\n");
 	printf("----------6.保存文档 ----------\n");
+	printf("----------7.随机载入联系人 -----\n");
 	printf("----------0.退出通讯录---------\t文件版本 自动保存\n");
 	printf("-------------------------------\t已自动排序 按年龄大小\n");
 }
@@ -61,6 +62,11 @@ int main(void)
 		case SAVE:
 		{
 			savetxtcontact(&ct);
+			break;
+		}
+		case RAND:
+		{
+			randcontact(&ct);
 			break;
 		}
 		case EXIT:
