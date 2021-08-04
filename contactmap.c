@@ -3,7 +3,7 @@
 
 int cmp(const void* base1, const void* base2)
 {
-	return (*(info*)base1).age - (*(info*)base2).age;
+	return (*(info*)base1).age > (*(info*)base2).age;
 }
 
 void contactinitialize(contact* ps)
@@ -221,6 +221,7 @@ void randcontact(contact* ps)
 		return;
 	}
 	ps->data = tmp;
+	ps->capacity += size;
 	srand((unsigned)time(NULL));
 	for (int i = 0; i < size; i++)
 	{
@@ -249,6 +250,7 @@ void randcontact(contact* ps)
 		strcpy(ps->data[ps->size].address,home);
 		ps->size++;
 	}
+	qsort(ps->data,size, sizeof(info), cmp);
 	return;
 }
 

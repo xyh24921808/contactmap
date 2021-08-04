@@ -1,7 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include"contact.h"
 
-
 void menu()
 {
 	printf("-------------------------------\n");
@@ -31,31 +30,31 @@ int main(void)
 		{
 		case ADD:
 		{
-			system("cls");
+			//system("cls");
 			addcontact(&ct);
 			break;
 		}
 		case DET:
 		{
-			system("cls");
+			//system("cls");
 			detcontact(&ct);
 			break;
 		}
 		case FIND:
 		{
-			system("cls");
+			//system("cls");
 			findcontact(&ct);
 			break;
 		}
 		case CHANGER:
 		{
-			system("cls");
+			//system("cls");
 			changecontact(&ct);
 			break;
 		}
 		case SHOW:
 		{
-			system("cls");
+			//system("cls");
 			showcontact(&ct);
 			break;
 		}
@@ -66,6 +65,7 @@ int main(void)
 		}
 		case RAND:
 		{
+	
 			randcontact(&ct);
 			break;
 		}
